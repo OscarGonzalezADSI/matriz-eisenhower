@@ -6,10 +6,10 @@ date_default_timezone_set('America/Bogota');
  class Conexion extends PDO
  {
      private $tipo_de_base = 'mysql';
-     private $host = 'localhost';
+     private $host = 'mariadb';
      private $nombre_de_base = 'meisenhower';
      private $usuario = 'root';
-     private $contrasena = '';
+     private $contrasena = 'password';
 
      public function __construct()
      {

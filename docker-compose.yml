@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+
+  app_matriz_eisenhower:
+    build:
+      context: .
+    volumes:
+      - ./src/:/var/www/html
+    restart: always
+    ports:
+      - 80:80
+
+  mariadb:
+    image: mariadb:10.6.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=meisenhower
+    volumes:
+      - ./db/:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8080:80
+    links:
+      - mariadb:db
